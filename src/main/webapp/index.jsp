@@ -1,13 +1,16 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.nio.file.Path" %>
 <!DOCTYPE html>
+<%@ page language="java" contentType="text/html;charset=UTF-8"%>
 <html lang="ru">
 <head>
     <meta charset="UTF-16">
-    <meta content="Лабораторная работа №1 по дисциплине веб-программирование." name="description">
+    <meta content="Лабораторная работа №2 по дисциплине веб-программирование." name="description">
     <meta content="Чулаков Камиль Фаридович" name="author">
     <meta content="P3215" name="group">
     <meta content="15020" name="variant">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/stylesheets/style.css">
-    <title>Web Lab1</title>
+    <title>Web Lab2</title>
 </head>
 <body id="grad">
 <div>
@@ -48,16 +51,19 @@
         <text x="150" y="280">-R</text>
         <line x1="148" x2="152" y1="270" y2="270"></line>
 
-        <circle r="2" stroke="black" cx="150" cy="150" />
+        <circle r="2" stroke="black" cx="150" cy="150"></circle>
 
 
         <polygon fill="black" points="300,150 295,145 295,155" stroke="black"></polygon>
         <polygon fill="black" points="150,0  145,5   155,5" stroke="black"></polygon>
 
-        <circle cx="150" cy="150" id="pointer" r="5"></circle>
+        <jsp:include page="pointmaker.jsp"/>
+
+<%--        <circle cx="150" cy="150" id="pointer" r="5"></circle>--%>
     </svg>
-    <p id="status" class="status">*errors placeholder*</p>
-    <form id="this_form" class="content">
+    <jsp:include page="pointmaker.jsp"/>
+    <p id="status" class="status"></p>
+    <form id="this_form" class="content" action="./">
         <table class="bordered">
             <thead>
             <tr>
@@ -117,23 +123,11 @@
     </form>
 
     <div class="content" id="answerTable">
-        <table>
-            <tr>
-                <th scope="col">X</th>
-                <th scope="col">Y</th>
-                <th scope="col">R</th>
-                <th scope="col">Результат</th>
-                <th scope="col">Время</th>
-                <th scope="col">Время работы скрипта</th>
-            </tr>
-
-            <tbody id="answerValues">
-
-            </tbody>
-        </table>
+        <jsp:include page="tablebody.jsp"/>
     </div>
-    <img id="cat" src="" alt="*Status code*" width="10%" height="10%">
+    <img id="cat" src="https://http.cat/521.jpg" alt="" width="10%" height="10%" hidden="hidden">
     <script src="<%= request.getContextPath() %>/scripts/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <footer>
         <a href="https://itmo.ru"><img src="https://duckduckgo.com/i/d491c9b6.png" alt="Красивая картинка"></a>
     </footer>

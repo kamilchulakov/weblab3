@@ -10,7 +10,7 @@ let answerValues = document.getElementById("answerValues"),
     arrayButton=document.getElementsByClassName("buttonR");
 let buttonItems=[].slice.call(arrayButton);
 
-setPointer()
+// setPointer()
 
 buttonItems.forEach(function choose(btn, index){
     btn.addEventListener('click', function () {
@@ -69,44 +69,32 @@ function checkR() {
     return pickedBtn
 }
 
-function setPointer() {
-    pointer.setAttribute("visibility", "visible");
-    pointer.setAttribute("cx", (X / R * 2 * 60 + 150).toString());
-    pointer.setAttribute("cy", (-Y / R * 2 * 60 + 150).toString());
-}
+// function setPointer() {
+//     pointer.setAttribute("visibility", "visible");
+//     pointer.setAttribute("cx", (X / R * 2 * 60 + 150).toString());
+//     pointer.setAttribute("cy", (-Y / R * 2 * 60 + 150).toString());
+// }
 
 function processSubmit() {
-    // let request = '?x=' + X + '&y=' + Y + '&r=' + R;
-    // setPointer();
-    // fetch("scripts/main.php" + request, {
-    //     method: "GET",
-    //     headers: {"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"},
-    // }).then(function (response) {
-    //     statusImg.setAttribute("src", "https://http.cat/" + response.status + ".jpg")
-    //     return response.json()
-    // }).then(function (serverAnswer) {
-    //     let result = "<tr>";
-    //     for (let [index, row] of Object.entries(serverAnswer).reverse()) {
-    //         for (let [key, value] of Object.entries(row)) {
-    //             if (key === "coordsStatus") {
-    //                 let color;
-    //                 if (value === "inside")
-    //                     color = "green"
-    //                 else
-    //                     color = "red"
-    //                 value = "<span style='color: " + color + "'>" + value + "</span>";
-    //             }
-    //             // sort alpha
-    //             result += "<td>" + value + "</td>"
-    //         }
-    //         result += "</tr>";
-    //     }
-    //     answerValues.innerHTML = result;
-    // }).catch(err => console.log(err));
+    $.ajax({
+        type: "GET",
+        url: "controller",
+        data: {
+            "x": X,
+            "y": Y,
+            "r": R
+        },
+        success: function () {
+            document.location.reload();
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            statusImg.hidden=false
+        }
+    });
 }
 
 document.getElementById("submitButton").onclick = function submit() {
-    statusBar.textContent="Be ready to get some errors here."
+    // statusBar.textContent="Be ready to get some errors here."
     if (checkX()) {
         if (checkY()) {
             if (checkR()) {
