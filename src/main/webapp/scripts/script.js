@@ -120,8 +120,8 @@ document.getElementById("clearButton").onclick = function clear() {
 // })
 document.getElementById("svgField").onmousedown = function submit(event) {
     const svgSize = 300;
-    let rowX = event.x - $('.svg-wrapper').offset().left
-    let rowY = event.y - $('.svg-wrapper').offset().top
+    let rowX = event.offsetX
+    let rowY = event.offsetY
     X = (((R / 50) * (svgSize / 2 - rowX) * -1) / 2).toFixed(1);
     Y = (((R / 50) * (svgSize / 2 - rowY)) / 2).toFixed(1);
     if (checkR()) {
