@@ -93,6 +93,19 @@ function processSubmit() {
     });
 }
 
+document.getElementById("clearButton").onclick = function clear() {
+    $.ajax({
+        type: "DELETE",
+        url: "controller",
+        success: function () {
+            document.location.reload();
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            statusImg.hidden=false
+        }
+    });
+}
+
 document.getElementById("submitButton").onclick = function submit() {
     // statusBar.textContent="Be ready to get some errors here."
     if (checkX()) {

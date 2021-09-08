@@ -24,7 +24,11 @@ public class ControllerServlet extends HttpServlet {
         if(x != null && y != null && r != null) {
             req.getRequestDispatcher("/check").forward(req, resp);
         } else {
-            getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+            if (req.getMethod().equals("DELETE")) {
+                log("REDIRECTED TO CLEAR due to DELETE");
+                req.getRequestDispatcher("/clear").forward(req, resp);
+            }
+            else getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
         }
     }
 }

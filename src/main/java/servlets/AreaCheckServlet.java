@@ -31,6 +31,7 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     private boolean isInArea(double x, double y, double r) {
-        return true;
+        return ((x >= 0) && (y <= 0) && ((x * x + y * y) <= r * r / 4.0)) || ((x <= 0) && (y >= 0) && (x + r >= 2* y))
+                || ((x >= 0) && (y >= 0) && (y <= r / 2.0) && (x <= r));
     }
 }
