@@ -106,6 +106,29 @@ document.getElementById("clearButton").onclick = function clear() {
     });
 }
 
+// $('svg').mousedown(function (e) {
+//     if (R) {
+//         const position = $('.svg-wrapper').offset();
+//         const rowX = e.pageX - position.left;
+//         const rowY = e.pageY - position.top;
+//         X = (((R / 50) * (150 - rowX) * -1) / 2).toFixed(1);
+//         Y = (((R / 50) * (150 - rowY)) / 2).toFixed(1);
+//
+//         processSubmit()
+//
+//     } else statusBar.textContent="Выберите R next time, please."
+// })
+document.getElementById("svgField").onmousedown = function submit(event) {
+    const svgSize = 300;
+    let rowX = event.x - $('.svg-wrapper').offset().left
+    let rowY = event.y - $('.svg-wrapper').offset().top
+    X = (((R / 50) * (svgSize / 2 - rowX) * -1) / 2).toFixed(1);
+    Y = (((R / 50) * (svgSize / 2 - rowY)) / 2).toFixed(1);
+    if (checkR()) {
+        processSubmit()
+    }else statusBar.textContent="Выберите R next time, please."
+}
+
 document.getElementById("submitButton").onclick = function submit() {
     // statusBar.textContent="Be ready to get some errors here."
     if (checkX()) {

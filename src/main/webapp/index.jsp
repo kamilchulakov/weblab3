@@ -17,7 +17,8 @@
     <header>
         <span>Чулаков Камиль Фаридович, P3215, 15020</span>
     </header>
-    <svg>
+    <div class="svg-wrapper">
+    <svg id="svgField">
         <!--            fill elements are here to make everything look nice-->
         <polygon fill="#1976d2" fill-opacity="1" points="150,90 30,150 150,150"></polygon>
         <rect fill="#1976d2" fill-opacity="1" x="150" y="90" height="60" width="120"></rect>
@@ -61,7 +62,7 @@
 
 <%--        <circle cx="150" cy="150" id="pointer" r="5"></circle>--%>
     </svg>
-    <jsp:include page="pointmaker.jsp"/>
+    </div>
     <p id="status" class="status"></p>
     <form id="this_form" class="content" action="./">
         <table class="bordered">
