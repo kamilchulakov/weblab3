@@ -20,10 +20,10 @@
     <div class="svg-wrapper">
     <svg id="svgField">
         <!--            fill elements are here to make everything look nice-->
-        <polygon fill="#1976d2" fill-opacity="1" points="150,90 30,150 150,150"></polygon>
+        <polygon fill="#1976d2" fill-opacity="1" points="150,210 270,150 150,150"></polygon>
         <rect fill="#1976d2" fill-opacity="1" x="150" y="90" height="60" width="120"></rect>
         <g transform="translate(150,150)">
-            <path d="M0 0 60 0 A60 55 0 0 1 0 60" fill="#1976d2"/>
+            <path d="M0 0 -120 0 A120 115 0 0 1 0 -120" fill="#1976d2"/>
         </g>
         <line stroke="black" x1="0" x2="300" y1="150" y2="150"></line>
         <line stroke="black" x1="150" x2="150" y1="0" y2="300"></line>

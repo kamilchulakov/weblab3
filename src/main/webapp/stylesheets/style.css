@@ -73,7 +73,6 @@ img:hover {
 }
 
 #pointer {
-  fill: red;
   fill-opacity: 0.7;
   visibility: visible;
 }
