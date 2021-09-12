@@ -10,7 +10,7 @@
     String color = "red";
     if (result.result) color = "green";
     out.print(String.format("<circle r=\"5\" cx=%d cy=%d" +
-            " id=\"pointer\" fill=%s></circle>", Math.round((result.x * 2) / result.r * 50 + 300 / 2.0 + 1),
-            Math.round(300 / 2.0 + 1 - (result.y * 2) / result.r * 50), color
+            " id=\"pointer\" fill=%s></circle>", Math.round((result.x * 2) / result.r * 50 + 300 / 2.0),
+            Math.round(300 / 2.0 - (result.y * 2) / result.r * 50), color
             ));
 } %>
