@@ -6,4 +6,5 @@
   // var nullable: String? = null
   // this was red :|
   out.print(test_result);
+  // I don't really want to write Kotlin class for printing html :|
 %>
