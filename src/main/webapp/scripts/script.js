@@ -10,8 +10,6 @@ let answerValues = document.getElementById("answerValues"),
     arrayButton=document.getElementsByClassName("buttonR");
 let buttonItems=[].slice.call(arrayButton);
 
-// setPointer()
-
 buttonItems.forEach(function choose(btn, index){
     btn.addEventListener('click', function () {
         buttonItems.forEach(
@@ -69,12 +67,6 @@ function checkR() {
     return pickedBtn
 }
 
-// function setPointer() {
-//     pointer.setAttribute("visibility", "visible");
-//     pointer.setAttribute("cx", (X / R * 2 * 60 + 150).toString());
-//     pointer.setAttribute("cy", (-Y / R * 2 * 60 + 150).toString());
-// }
-
 function processSubmit() {
     $.ajax({
         type: "GET",
@@ -106,18 +98,6 @@ document.getElementById("clearButton").onclick = function clear() {
     });
 }
 
-// $('svg').mousedown(function (e) {
-//     if (R) {
-//         const position = $('.svg-wrapper').offset();
-//         const rowX = e.pageX - position.left;
-//         const rowY = e.pageY - position.top;
-//         X = (((R / 50) * (150 - rowX) * -1) / 2).toFixed(1);
-//         Y = (((R / 50) * (150 - rowY)) / 2).toFixed(1);
-//
-//         processSubmit()
-//
-//     } else statusBar.textContent="Выберите R next time, please."
-// })
 document.getElementById("svgField").onmousedown = function submit(event) {
     const svgSize = 300;
     let rowX = event.offsetX
@@ -130,7 +110,6 @@ document.getElementById("svgField").onmousedown = function submit(event) {
 }
 
 document.getElementById("submitButton").onclick = function submit() {
-    // statusBar.textContent="Be ready to get some errors here."
     if (checkX()) {
         if (checkY()) {
             if (checkR()) {
