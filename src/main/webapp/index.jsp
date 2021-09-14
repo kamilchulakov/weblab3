@@ -130,6 +130,7 @@
     <script src="<%= request.getContextPath() %>/scripts/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <footer>
+        <jsp:include page="kotlintest.jsp"/>
         <a href="https://itmo.ru"><img src="https://duckduckgo.com/i/d491c9b6.png" alt="Красивая картинка"></a>
     </footer>
 </div>
