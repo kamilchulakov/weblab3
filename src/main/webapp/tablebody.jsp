@@ -26,15 +26,5 @@
             out.print("<td>" + result.getResultTime() + "</td>");
             out.print("</tr>");
                 } %>
-        <%--        <c:forEach var="entry" items="${results.entries}">--%>
-<%--            <tr class="table-row">--%>
-<%--                <td>${entry.x}</td>--%>
-<%--                <td>${entry.y}</td>--%>
-<%--                <td>${entry.r}</td>--%>
-<%--                <td>${results.simpleDateFormat.format(entry.queryTime)}</td>--%>
-<%--                <td>${entry.result ? "<div style=\"color: green\">Внутри</div>" :--%>
-<%--                        "<div style=\"color: red\">Снаружи</div>"}</td>--%>
-<%--            </tr>--%>
-<%--        </c:forEach>--%>
     </tbody>
 </table>
