@@ -18,4 +18,4 @@ not done yet
 
   Решения: 
     1. Новая архитектура и сервлеты 
-    2. ~~Autorefresh~~(is just reload :|)
+    2. ~~Autorefresh~~ is just reload :|
