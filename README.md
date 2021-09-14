@@ -14,4 +14,8 @@ not done yet
 - ~~Migrate to c tag (c:forEach) or declare funs in a [class](https://github.com/ulyanovskk/weblab2/blob/master/src/main/java/kotlin_meme_jsp/KJSP.kt)~~
 ### Notes
 - No reload needs new architecture, new controller, new everything. No JSP table making? I guess... No JSP points making? I think so...
-- Получение только новых данных в респонсе и их отображение (получается очень похоже на работу с php в первой лабе). В таком случае, вся прелесть JSP теряется, например, работа с bean'ами и taglib prefix "c". Решение: 1. Новая архитектура и сервлеты 2. Autorefresh
+- Получение только новых данных в респонсе и их отображение (получается очень похоже на работу с php в первой лабе). В таком случае, вся прелесть JSP теряется, например, работа с bean'ами и taglib prefix "c".
+
+  Решения: 
+    1. Новая архитектура и сервлеты 
+    2. ~~Autorefresh~~(is just reload :|)
