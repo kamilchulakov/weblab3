@@ -43,13 +43,13 @@ function checkY() {
     let Y_text = document.getElementById('Y-text');
     let Y2 = Y_text.value.replace(',', '.')
     if (Y2.trim() === "") {
-        statusBar.textContent="Заполните поле Y";
+        changeStatus("Заполните поле Y");
         return false;
     } else if (!isFinite(Y2)) {
-        statusBar.textContent="Должно Y быть числом";
+        changeStatus("Должно Y быть числом");
         return false;
     } else if (Y2 >= 5 && Y2 <= -3) {
-        statusBar.textContent="Должно быть Y в диапазоне (-3; 5)";
+        changeStatus("Должно быть Y в диапазоне (-3; 5)");
         return false;
     } else {
         if (Y2 >= -3 && Y2 <= 5) {
@@ -57,7 +57,7 @@ function checkY() {
             return true
         }
         else {
-            statusBar.textContent="Должно быть Y в диапазоне (-3; 5)";
+            changeStatus("Должно быть Y в диапазоне (-3; 5)");
             return false;
         }
     }
@@ -85,6 +85,13 @@ function processSubmit() {
     });
 }
 
+function changeStatus(text) {
+    statusBar.textContent=text
+    statusBar.style.display = "inline-block"
+}
+
+statusBar.style.display = "none";
+
 document.getElementById("clearButton").onclick = function clear() {
     $.ajax({
         type: "DELETE",
@@ -106,7 +113,7 @@ document.getElementById("svgField").onmousedown = function submit(event) {
     Y = (((R / 50) * (svgSize / 2 - rowY)) / 2).toFixed(1);
     if (checkR()) {
         processSubmit()
-    }else statusBar.textContent="Выберите R next time, please."
+    }else changeStatus("Выберите R next time, please.")
 }
 
 document.getElementById("submitButton").onclick = function submit() {
@@ -114,7 +121,7 @@ document.getElementById("submitButton").onclick = function submit() {
         if (checkY()) {
             if (checkR()) {
                 processSubmit()
-            }else statusBar.textContent="Выберите R next time, please."
+            }else changeStatus("Выберите R next time, please.")
         }
     }
 }

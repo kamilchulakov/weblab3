@@ -63,7 +63,7 @@
 <%--        <circle cx="150" cy="150" id="pointer" r="5"></circle>--%>
     </svg>
     </div>
-    <p id="status" class="status"></p>
+    <p id="status" class="status">This is hidden</p>
     <form id="this_form" class="content" action="./">
         <table class="bordered">
             <thead>
@@ -127,12 +127,12 @@
         <jsp:include page="tablebody.jsp"/>
     </div>
     <img id="cat" src="https://http.cat/521.jpg" alt="" width="10%" height="10%" hidden="hidden">
-    <script src="<%= request.getContextPath() %>/scripts/script.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <footer>
         <jsp:include page="kotlintest.jsp"/>
         <a href="https://itmo.ru"><img src="https://duckduckgo.com/i/d491c9b6.png" alt="Красивая картинка"></a>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="<%= request.getContextPath() %>/scripts/script.js"></script>
 </div>
 
 </body>
