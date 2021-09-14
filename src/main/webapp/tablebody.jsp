@@ -15,5 +15,5 @@
     <tbody id="answerValues">
         <jsp:useBean id="results" scope="session" class="model.Results"/>
         <% out.print(getTable(request, response, results)); %>
-    </tbody id="answerValues">
+    </tbody>
 </table>
