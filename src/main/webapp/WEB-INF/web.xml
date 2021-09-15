@@ -4,6 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <filter>
+    <filter-name>LoggingFilter</filter-name>
+    <filter-class>servlets.RequestLoggingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoggingFilter</filter-name>
+    <url-pattern>*</url-pattern>
+  </filter-mapping>
   <servlet>
     <servlet-name>Controller</servlet-name>
     <servlet-class>servlets.ControllerServlet</servlet-class>
