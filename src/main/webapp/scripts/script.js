@@ -1,5 +1,6 @@
 let answerValues = document.getElementById("answerValues"),
     pointer = document.getElementById("pointer"),
+    pointsPlace = document.getElementById("svgField")
     grad = "linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)",
     pickedBtn = false,
     X = 0,
@@ -76,8 +77,45 @@ function processSubmit() {
             "y": Y,
             "r": R
         },
-        success: function () {
-            document.location.reload();
+        success: function (data) {
+            answerValues.innerHTML=data.split("kotlin")[0]
+            pointsPlace.innerHTML="<polygon fill=\"#1976d2\" fill-opacity=\"1\" points=\"150,210 270,150 150,150\"></polygon>\n" +
+                "        <rect fill=\"#1976d2\" fill-opacity=\"1\" x=\"150\" y=\"90\" height=\"60\" width=\"120\"></rect>\n" +
+                "        <g transform=\"translate(150,150)\">\n" +
+                "            <path d=\"M0 0 -120 0 A120 115 0 0 1 0 -120\" fill=\"#1976d2\"/>\n" +
+                "        </g>\n" +
+                "        <line stroke=\"black\" x1=\"0\" x2=\"300\" y1=\"150\" y2=\"150\"></line>\n" +
+                "        <line stroke=\"black\" x1=\"150\" x2=\"150\" y1=\"0\" y2=\"300\"></line>\n" +
+                "\n" +
+                "        <text x=\"275\" y=\"143\">R</text>\n" +
+                "        <line x1=\"270\" x2=\"270\" y1=\"148\" y2=\"152\"></line>\n" +
+                "\n" +
+                "        <text x=\"215\" y=\"143\">R/2</text>\n" +
+                "        <line x1=\"210\" x2=\"210\" y1=\"148\" y2=\"152\"></line>\n" +
+                "\n" +
+                "        <text x=\"90\" y=\"143\">-R/2</text>\n" +
+                "        <line x1=\"90\" x2=\"90\" y1=\"148\" y2=\"152\"></line>\n" +
+                "\n" +
+                "        <text x=\"30\" y=\"143\">-R</text>\n" +
+                "        <line x1=\"30\" x2=\"30\" y1=\"148\" y2=\"152\"></line>\n" +
+                "\n" +
+                "        <text x=\"150\" y=\"26\">R</text>\n" +
+                "        <line x1=\"148\" x2=\"152\" y1=\"30\" y2=\"30\"></line>\n" +
+                "\n" +
+                "        <text x=\"150\" y=\"86\">R/2</text>\n" +
+                "        <line x1=\"148\" x2=\"152\" y1=\"90\" y2=\"90\"></line>\n" +
+                "\n" +
+                "        <text x=\"150\" y=\"210\">-R/2</text>\n" +
+                "        <line x1=\"148\" x2=\"152\" y1=\"210\" y2=\"210\"></line>\n" +
+                "\n" +
+                "        <text x=\"150\" y=\"280\">-R</text>\n" +
+                "        <line x1=\"148\" x2=\"152\" y1=\"270\" y2=\"270\"></line>\n" +
+                "\n" +
+                "        <circle r=\"2\" stroke=\"black\" cx=\"150\" cy=\"150\"></circle>\n" +
+                "\n" +
+                "\n" +
+                "        <polygon fill=\"black\" points=\"300,150 295,145 295,155\" stroke=\"black\"></polygon>\n" +
+                "        <polygon fill=\"black\" points=\"150,0  145,5   155,5\" stroke=\"black\"></polygon>" + data.split("kotlin")[1]
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             statusImg.hidden=false
@@ -96,8 +134,47 @@ document.getElementById("clearButton").onclick = function clear() {
     $.ajax({
         type: "DELETE",
         url: "controller",
-        success: function () {
-            document.location.reload();
+        success: function (data) {
+            if (data === "Cleared") {
+                answerValues.innerHTML=""
+                pointsPlace.innerHTML = "<polygon fill=\"#1976d2\" fill-opacity=\"1\" points=\"150,210 270,150 150,150\"></polygon>\n" +
+                    "        <rect fill=\"#1976d2\" fill-opacity=\"1\" x=\"150\" y=\"90\" height=\"60\" width=\"120\"></rect>\n" +
+                    "        <g transform=\"translate(150,150)\">\n" +
+                    "            <path d=\"M0 0 -120 0 A120 115 0 0 1 0 -120\" fill=\"#1976d2\"/>\n" +
+                    "        </g>\n" +
+                    "        <line stroke=\"black\" x1=\"0\" x2=\"300\" y1=\"150\" y2=\"150\"></line>\n" +
+                    "        <line stroke=\"black\" x1=\"150\" x2=\"150\" y1=\"0\" y2=\"300\"></line>\n" +
+                    "\n" +
+                    "        <text x=\"275\" y=\"143\">R</text>\n" +
+                    "        <line x1=\"270\" x2=\"270\" y1=\"148\" y2=\"152\"></line>\n" +
+                    "\n" +
+                    "        <text x=\"215\" y=\"143\">R/2</text>\n" +
+                    "        <line x1=\"210\" x2=\"210\" y1=\"148\" y2=\"152\"></line>\n" +
+                    "\n" +
+                    "        <text x=\"90\" y=\"143\">-R/2</text>\n" +
+                    "        <line x1=\"90\" x2=\"90\" y1=\"148\" y2=\"152\"></line>\n" +
+                    "\n" +
+                    "        <text x=\"30\" y=\"143\">-R</text>\n" +
+                    "        <line x1=\"30\" x2=\"30\" y1=\"148\" y2=\"152\"></line>\n" +
+                    "\n" +
+                    "        <text x=\"150\" y=\"26\">R</text>\n" +
+                    "        <line x1=\"148\" x2=\"152\" y1=\"30\" y2=\"30\"></line>\n" +
+                    "\n" +
+                    "        <text x=\"150\" y=\"86\">R/2</text>\n" +
+                    "        <line x1=\"148\" x2=\"152\" y1=\"90\" y2=\"90\"></line>\n" +
+                    "\n" +
+                    "        <text x=\"150\" y=\"210\">-R/2</text>\n" +
+                    "        <line x1=\"148\" x2=\"152\" y1=\"210\" y2=\"210\"></line>\n" +
+                    "\n" +
+                    "        <text x=\"150\" y=\"280\">-R</text>\n" +
+                    "        <line x1=\"148\" x2=\"152\" y1=\"270\" y2=\"270\"></line>\n" +
+                    "\n" +
+                    "        <circle r=\"2\" stroke=\"black\" cx=\"150\" cy=\"150\"></circle>\n" +
+                    "\n" +
+                    "\n" +
+                    "        <polygon fill=\"black\" points=\"300,150 295,145 295,155\" stroke=\"black\"></polygon>\n" +
+                    "        <polygon fill=\"black\" points=\"150,0  145,5   155,5\" stroke=\"black\"></polygon>"
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             statusImg.hidden=false
