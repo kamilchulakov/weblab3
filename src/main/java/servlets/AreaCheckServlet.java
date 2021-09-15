@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 
-import static kotlin_meme_jsp.KJSPKt.getTable;
-import static kotlin_meme_jsp.KJSPKt.makePoints;
-
 @WebServlet("/check")
 public class AreaCheckServlet extends HttpServlet {
     @Override
@@ -31,8 +28,6 @@ public class AreaCheckServlet extends HttpServlet {
         if (results == null) results = new Results();
         results.addEntry(entry);
         session.setAttribute("results", results);
-        resp.getWriter().print(getTable(req, resp, results) + "kotlin");
-        makePoints(req, resp, results);
     }
 
     private boolean isInArea(double x, double y, double r) {

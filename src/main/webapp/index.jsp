@@ -57,6 +57,7 @@
 
         <polygon fill="black" points="300,150 295,145 295,155" stroke="black"></polygon>
         <polygon fill="black" points="150,0  145,5   155,5" stroke="black"></polygon>
+
         <jsp:include page="pointmaker.jsp"/>
 
 <%--        <circle cx="150" cy="150" id="pointer" r="5"></circle>--%>

@@ -16,6 +16,5 @@ public class ClearServlet extends HttpServlet {
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.setAttribute("results", new Results());
-        resp.getWriter().print("Cleared");
     }
 }

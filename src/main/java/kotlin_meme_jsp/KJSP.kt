@@ -30,8 +30,8 @@ fun getTable(req: HttpServletRequest, resp: HttpServletResponse, results: Result
         stringBuilder.append("<td>" + result.getX() + "</td>");
         stringBuilder.append("<td>" + result.getY() + "</td>");
         stringBuilder.append("<td>" + result.getR() + "</td>");
-        stringBuilder.append("<td>" + ( if (result.isInside) "<div style=\"color: green\">In</div>" else
-        "<div style=\"color: red\">Out</div>"+ "</td>"));
+        stringBuilder.append("<td>" + ( if (result.isInside) "<div style=\"color: green\">Внутри</div>" else
+        "<div style=\"color: red\">Снаружи</div>"+ "</td>"));
         stringBuilder.append("<td>" + results.simpleDateFormat.format(result.queryTime) + "</td>");
         stringBuilder.append("<td>" + result.resultTime + "</td>");
         stringBuilder.append("</tr>");
