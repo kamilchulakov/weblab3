@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse
 import kotlin.math.roundToInt
 
 fun makeKotlinTest(req: HttpServletRequest, resp: HttpServletResponse) {
-    resp.writer.println("<p>OH MY KOTLIN!</p>")
+    resp.writer.println("<p>stable version</p>")
 }
 
 fun makePoints(req: HttpServletRequest, resp: HttpServletResponse, results: Results) {
