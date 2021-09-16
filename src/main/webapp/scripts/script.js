@@ -65,6 +65,15 @@ function checkY() {
 }
 
 function checkR() {
+    if (pickedBtn) {
+        // let points = [].slice.call(document.getElementsByClassName("pointer"));
+        // alert(points.length)
+        // for (let i = 0; i < points.length; i++) {
+        //     let pointer = points[i]
+        //     pointer.setAttribute("cx", (X / R * 2 * 60 + 150).toString());
+        //     pointer.setAttribute("cy", (-Y / R * 2 * 60 + 150).toString());
+        // }
+    }
     return pickedBtn
 }
 
@@ -116,6 +125,10 @@ function processSubmit() {
                 "\n" +
                 "        <polygon fill=\"black\" points=\"300,150 295,145 295,155\" stroke=\"black\"></polygon>\n" +
                 "        <polygon fill=\"black\" points=\"150,0  145,5   155,5\" stroke=\"black\"></polygon>" + data.split("kotlin")[1]
+            // document.querySelectorAll('[id=pointer]').forEach(element => {
+            //     element.setAttribute("cx", (X / R * 2 * 60 + 150).toString());
+            //     element.setAttribute("cy", (-Y / R * 2 * 60 + 150).toString());
+            // })
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             statusImg.hidden=false

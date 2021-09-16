@@ -32,7 +32,7 @@ public class AreaCheckServlet extends HttpServlet {
         results.addEntry(entry);
         session.setAttribute("results", results);
         resp.getWriter().print(getTable(req, resp, results) + "kotlin");
-        makePoints(req, resp, results);
+        makePoints(req, resp, results, r);
     }
 
     private boolean isInArea(double x, double y, double r) {
