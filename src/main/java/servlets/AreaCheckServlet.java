@@ -1,7 +1,7 @@
 package servlets;
 
 import model.Result;
-import model.Results;
+import model.ResultsBean;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,10 +24,10 @@ public class AreaCheckServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Date currentTime = new Date();
         Result entry = new Result(x, y, r, result, (Date) session.getAttribute("queryTime"), currentTime);
-        Results results = (Results) session.getAttribute("results");
-        if (results == null) results = new Results();
-        results.addEntry(entry);
-        session.setAttribute("results", results);
+        ResultsBean resultsBean = (ResultsBean) session.getAttribute("results");
+        if (resultsBean == null) resultsBean = new ResultsBean();
+        resultsBean.addEntry(entry);
+        session.setAttribute("results", resultsBean);
     }
 
     private boolean isInArea(double x, double y, double r) {

@@ -7,11 +7,11 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Objects;
 
-public class Results implements Serializable {
+public class ResultsBean implements Serializable {
     final Deque<Result> entries;
     SimpleDateFormat simpleDateFormat;
 
-    public Results() {
+    public ResultsBean() {
         entries = new ArrayDeque<>();
         simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
     }
@@ -31,9 +31,9 @@ public class Results implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (! (o instanceof Results)) return false;
-        Results results1 = (Results) o;
-        return Objects.equals(getEntries(), results1.getEntries()) && Objects.equals(getSimpleDateFormat(), results1.getSimpleDateFormat());
+        if (! (o instanceof ResultsBean)) return false;
+        ResultsBean resultsBean1 = (ResultsBean) o;
+        return Objects.equals(getEntries(), resultsBean1.getEntries()) && Objects.equals(getSimpleDateFormat(), resultsBean1.getSimpleDateFormat());
     }
 
     @Override
