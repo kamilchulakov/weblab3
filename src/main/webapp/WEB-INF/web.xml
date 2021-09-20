@@ -7,7 +7,7 @@
 
   <servlet>
     <servlet-name>Controller</servlet-name>
-    <servlet-class>servlets.ControllerServlet</servlet-class>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
 
