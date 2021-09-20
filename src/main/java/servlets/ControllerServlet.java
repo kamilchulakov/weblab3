@@ -28,7 +28,6 @@ public class ControllerServlet extends HttpServlet {
                 log("REDIRECTED TO CLEAR due to DELETE");
                 req.getRequestDispatcher("/clear").forward(req, resp);
             }
-            else getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
         }
     }
 }
