@@ -3,9 +3,6 @@ html, body {
   margin: 0;
   padding: 0;
 }
-#grad {
-  background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
-}
 
 tr {
   padding-left: 500%;
