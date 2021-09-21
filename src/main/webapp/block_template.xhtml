@@ -16,6 +16,7 @@
 
 <h:head>
     <title>Template</title>
+    <h:outputStylesheet library="stylesheets" name="style.css"/>
 
 </h:head>
 
@@ -34,15 +35,21 @@
             </ui:insert>
         </div>
 
+        <div id="sidebar">
+            <div id="error_block">
+                <p>Status</p>
+            </div>
+            <div id="http_cat_block">
+                <img src="https://http.cat/200.jpg" alt="" width="100%"/>
+            </div>
+        </div>
+
         <div id="content">
-            <ui:insert name="content" >
-            </ui:insert>
+
         </div>
 
         <div id="footer">
-            <ui:insert name="footer" >
-                <a href="https://itmo.ru"><img src="https://duckduckgo.com/i/d491c9b6.png" alt="Красивая картинка"/></a>
-            </ui:insert>
+            <a href="https://itmo.ru"><img src="https://duckduckgo.com/i/d491c9b6.png" alt="Красивая картинка" height="100%"/></a>
         </div>
     </div>
 </h:body>
