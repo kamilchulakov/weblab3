@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<div class="svg-wrapper">
+    <svg xmlns="http://www.w3.org/2000/svg" id="svgField">
+        <!--            fill elements are here to make everything look nice-->
+        <polygon fill="#1976d2" fill-opacity="1" points="150,210 270,150 150,150"/>
+        <rect fill="#1976d2" fill-opacity="1" x="150" y="90" height="60" width="120"/>
+        <g transform="translate(150,150)">
+            <path d="M0 0 -120 0 A120 115 0 0 1 0 -120" fill="#1976d2"/>
+        </g>
+        <line stroke="black" x1="0" x2="300" y1="150" y2="150"/>
+        <line stroke="black" x1="150" x2="150" y1="0" y2="300"/>
+
+        <text x="275" y="143">R</text>
+        <line x1="270" x2="270" y1="148" y2="152"/>
+
+        <text x="215" y="143">R/2</text>
+        <line x1="210" x2="210" y1="148" y2="152"/>
+
+        <text x="90" y="143">-R/2</text>
+        <line x1="90" x2="90" y1="148" y2="152"/>
+
+        <text x="30" y="143">-R</text>
+        <line x1="30" x2="30" y1="148" y2="152"/>
+
+        <text x="150" y="26">R</text>
+        <line x1="148" x2="152" y1="30" y2="30"/>
+
+        <text x="150" y="86">R/2</text>
+        <line x1="148" x2="152" y1="90" y2="90"/>
+        <text x="150" y="210">-R/2</text>
+        <line x1="148" x2="152" y1="210" y2="210"/>
+
+        <text x="150" y="280">-R</text>
+        <line x1="148" x2="152" y1="270" y2="270"/>
+
+        <circle r="2" stroke="black" cx="150" cy="150"/>
+
+
+        <polygon fill="black" points="300,150 295,145 295,155" stroke="black"/>
+        <polygon fill="black" points="150,0  145,5   155,5" stroke="black"/>
+
+<!--        <%&#45;&#45;        <circle cx="150" cy="150" id="pointer" r="5"></circle>&#45;&#45;%>-->
+    </svg>
+</div>
+</html>

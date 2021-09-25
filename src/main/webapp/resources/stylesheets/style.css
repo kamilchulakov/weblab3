@@ -65,12 +65,12 @@
 }
 
 
-table{
+#result-table{
   border: 1px solid black;
   table-layout: fixed;
 }
 
-th, td {
+#result-table th,#result-table td {
   border: 1px solid black;
   width: 20px;
   overflow: hidden;
@@ -82,10 +82,14 @@ a {
   color: #FFFFFF;
 }
 
-#sumbitter {
-
-}
-
 #clearer {
   background-color: firebrick;
+}
+
+svg {
+  width: 300px; height: 300px; padding: 5%
+}
+
+text+line{
+  stroke: black;
 }

@@ -9,10 +9,10 @@ import java.util.*;
 @ManagedBean
 @SessionScoped
 public class ResultsBean implements Serializable {
-    final Deque<Result> entries;
-    public double x;
-    public double y;
-    public double r;
+    private Deque<Result> entries;
+    private double x;
+    private double y = 0.0;
+    private double r = 2.0;
 
     public ResultsBean() {
         entries = new ArrayDeque<>();
@@ -46,6 +46,10 @@ public class ResultsBean implements Serializable {
         Date date = new Date();
         Result result = new Result(x, y, r, isInside(), date, new Date());
         entries.addFirst(result);
+    }
+
+    public void clear() {
+        entries = new ArrayDeque<>();
     }
 
     private boolean isInside() {

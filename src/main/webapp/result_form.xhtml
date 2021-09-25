@@ -7,6 +7,10 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+
+</h:head>
+<h:body>
 <h:form id="form">
     <div class="x-value">
         <p>Выберите X:</p>
@@ -14,14 +18,16 @@
                           value="#{resultsBean.x}"
                           required="true"
                                  action="#{resultsBean.x}"
-                                 requiredMessage="X is required">
-            <f:selectItem itemValue="-3" itemLabel="-3"/>
+                                 requiredMessage="X is required" style="text-align: center">
             <f:selectItem itemValue="-2" itemLabel="-2"/>
+            <f:selectItem itemValue="-1.5" itemLabel="-1.5"/>
             <f:selectItem itemValue="-1" itemLabel="-1"/>
+            <f:selectItem itemValue="-0.5" itemLabel="-0.5"/>
             <f:selectItem itemValue="0" itemLabel="0"/>
+            <f:selectItem itemValue="0.5" itemLabel="0.5"/>
             <f:selectItem itemValue="1" itemLabel="1"/>
+            <f:selectItem itemValue="1.5" itemLabel="1.5"/>
             <f:selectItem itemValue="2" itemLabel="2"/>
-            <f:selectItem itemValue="3" itemLabel="3"/>
         </h:selectOneRadio >
 <!--        <h:message for="x" style="color: red"/>-->
 
@@ -38,18 +44,11 @@
     </div>
     <div class="r-value">
         <p>Выберите R:</p>
-        <h:selectOneRadio id="r"
-                          value="#{resultsBean.r}"
-                          required="true"
-                          requiredMessage="R is required">
-            <f:selectItem itemValue="1" itemLabel="1"/>
-            <f:selectItem itemValue="2" itemLabel="2"/>
-            <f:selectItem itemValue="3" itemLabel="3"/>
-            <f:selectItem itemValue="4" itemLabel="4"/>
-            <f:selectItem itemValue="5" itemLabel="5"/>
-        </h:selectOneRadio>
+        <h:panelGrid columns="1" style="margin-bottom: 10px">
+        <p:inputText id="r" value="#{resultsBean.r}"/>
+        <p:slider for="r" minValue="2" maxValue="5" step="0.25"/>
+        </h:panelGrid>
     </div>
-
 
     <div>
         <h:commandButton id="sumbitter" type="submit" value="Submit" action="#{resultsBean.submitResult}" style="background: darkcyan">
@@ -60,4 +59,5 @@
         </h:commandButton>
     </div>
 </h:form>
+</h:body>
 </html>

@@ -9,7 +9,7 @@ function check() {
         method: "OPTIONS",
     }).then( function (res) {
             statusImg.setAttribute("src", "resources/img/200.png");
-            if (res.status !== 200) statusImg.setAttribute("src", "resources/img/" + res.statusText + ".png");
+            if (res.status !== 200) statusImg.setAttribute("src", "resources/img/" + res.statusText + ".jpg");
         }
     ).catch(function () {
         statusImg.setAttribute("src", "resources/img/503.png")
