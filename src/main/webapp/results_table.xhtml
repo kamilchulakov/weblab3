@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<div style="height: 35%; overflow: auto; width: 35%; background: #3c6a79">
+<h:dataTable id="result-table" value="#{resultsBean.entries}" var="result">
+   <h:column>
+      <f:facet name="header">X</f:facet>
+      ${result.x}
+   </h:column>
+
+   <h:column>
+      <f:facet name="header">Y</f:facet>
+      ${result.y}
+   </h:column>
+
+   <h:column>
+      <f:facet name="header">R</f:facet>
+      ${result.r}
+   </h:column>
+
+   <h:column>
+      <f:facet name="header">Result</f:facet>
+      ${result.result ? "Yes" : "No"}
+   </h:column>
+
+   <h:column>
+      <f:facet name="header">Query Time</f:facet>
+      ${result.queryTime}
+   </h:column>
+
+   <h:column>
+      <f:facet name="header">Runtime</f:facet>
+      ${result.resultTime} ms
+   </h:column>
+
+</h:dataTable>
+</div>
+</html>

@@ -1,6 +1,6 @@
 package servlets;
 
-import model.Results;
+import model.ResultsBean;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +15,6 @@ public class ClearServlet extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        session.setAttribute("results", new Results());
-        resp.getWriter().print("Cleared");
+        session.setAttribute("results", new ResultsBean());
     }
 }

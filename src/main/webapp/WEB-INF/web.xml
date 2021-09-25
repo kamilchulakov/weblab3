@@ -3,21 +3,45 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  <filter>
-    <filter-name>LoggingFilter</filter-name>
-    <filter-class>servlets.RequestLoggingFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>LoggingFilter</filter-name>
-    <url-pattern>*</url-pattern>
-  </filter-mapping>
+  <display-name>Web Application</display-name>
+
+<!--  <filter>-->
+<!--    <filter-name>AddData</filter-name>-->
+<!--    <filter-class>servlets.AddingDataFilter</filter-class>-->
+<!--  </filter>-->
+<!--  <filter-mapping>-->
+<!--    <filter-name>AddData</filter-name>-->
+<!--&lt;!&ndash;    <url-pattern>*</url-pattern>&ndash;&gt;-->
+<!--    <servlet-name>Controller</servlet-name>-->
+<!--  </filter-mapping>-->
+
   <servlet>
     <servlet-name>Controller</servlet-name>
-    <servlet-class>servlets.ControllerServlet</servlet-class>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
   </servlet>
+
+  <!-- Map these files with JSF -->
   <servlet-mapping>
     <servlet-name>Controller</servlet-name>
     <url-pattern>*</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>*.jsf</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>*.faces</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+
+  <!-- Welcome page -->
+  <welcome-file-list>
+    <welcome-file>index.xhtml</welcome-file>
+  </welcome-file-list>
+
 </web-app>

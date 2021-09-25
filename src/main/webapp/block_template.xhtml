@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: user
+  Date: 20.09.2021
+  Time: 19:07
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+    <title>Main</title>
+    <h:outputStylesheet library="stylesheets" name="style.css"/>
+
+</h:head>
+
+<h:body>
+    <div id="page">
+        <div id="header">
+            <ui:insert name="header" >
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="First Name" class="label"/>
+                    <h:outputLabel value="Kamil"/>
+                    <h:outputLabel value="Last Name" class="label"/>
+                    <h:outputLabel value="Chulakov"/>
+                    <h:outputLabel value="Group" class="label"/>
+                    <h:outputLabel value="P3215" style="font: italic, bold"/>
+                </h:panelGrid>
+            </ui:insert>
+        </div>
+
+        <div id="sidebar">
+            <div id="error_block">
+                <ui:insert name="error_status">
+                    <p>Server Status</p>
+                </ui:insert>
+            </div>
+            <div id="http_cat_block">
+                <ui:insert name="error_message">
+                </ui:insert>
+            </div>
+        </div>
+
+        <div id="svgbar">
+            <ui:insert name="svgbar">
+
+            </ui:insert>
+        </div>
+
+        <div id="content">
+            <ui:insert name="content">
+
+            </ui:insert>
+        </div>
+
+
+        <div id="footer">
+            <ui:insert name="footer">
+                <a href="https://itmo.ru"><img src="https://duckduckgo.com/i/d491c9b6.png" alt="Красивая картинка" height="100%"/></a>
+            </ui:insert>
+        </div>
+    </div>
+<!--    <h:outputScript library="scripts" name="alert_on_start.js"/>-->
+    <h:outputScript library="scripts" name="server_status_checker.js"/>
+</h:body>
+
+
+</html>
