@@ -52,7 +52,10 @@
 
 
     <div>
-        <h:commandButton styleClass="my-button" type="submit" value="Submit" action="#{resultsBean.submitResult}">
+        <h:commandButton id="sumbitter" type="submit" value="Submit" action="#{resultsBean.submitResult}" style="background: darkcyan">
+            <f:ajax execute="@form" render="result-table"/>
+        </h:commandButton>
+        <h:commandButton id="clearer" type="submit" value="Clear" action="#{resultsBean.clear}">
             <f:ajax execute="@form" render="result-table"/>
         </h:commandButton>
     </div>

@@ -7,8 +7,9 @@ window.onload = function () {
 function check() {
     fetch("" ,{
         method: "OPTIONS",
-    }).then( function () {
-            statusImg.setAttribute("src", "resources/img/200.png")
+    }).then( function (res) {
+            statusImg.setAttribute("src", "resources/img/200.png");
+            if (res.status !== 200) statusImg.setAttribute("src", "resources/img/" + res.statusText + ".png");
         }
     ).catch(function () {
         statusImg.setAttribute("src", "resources/img/503.png")

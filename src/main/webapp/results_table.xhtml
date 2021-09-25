@@ -8,9 +8,8 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<div style="height: 35%; overflow: auto;">
+<div style="height: 35%; overflow: auto; width: 29%; background: #3c6a79">
 <h:dataTable id="result-table" value="#{resultsBean.entries}" var="point">
-<!--   <f:event type="preRenderView" listener="#{pointsBean.uploadPoints}"/>-->
    <h:column>
       <f:facet name="header">X</f:facet>
       ${point.x}
@@ -38,7 +37,7 @@
 
    <h:column>
       <f:facet name="header">Runtime</f:facet>
-      ${point.resultTime}
+      ${point.resultTime} ms
    </h:column>
 
 </h:dataTable>
