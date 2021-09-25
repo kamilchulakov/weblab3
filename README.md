@@ -3,7 +3,9 @@
 ```
 not implemented yet
 ```
-**void**
+- Error messages
+- Points making
+- Onlick SVG
 
 ### Done
 ```
@@ -15,3 +17,4 @@ not done yet
 ```
 not feeling good yet
 ```
+- DO NOT USE ANY NICEFACES
