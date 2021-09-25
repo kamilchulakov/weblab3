@@ -56,6 +56,24 @@ body {
   float: top;
 }
 
+#content * {
+  color: black;
+  text-align: center;
+}
+
+
+table{
+  border: 1px solid black;
+  table-layout: fixed;
+}
+
+th, td {
+  border: 1px solid black;
+  width: 20px;
+  overflow: hidden;
+  color: black;
+}
+
 a {
   text-align: center;
   color: #FFFFFF;

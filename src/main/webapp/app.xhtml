@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core"
                 template="./block_template.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns="http://www.w3.org/1999/xhtml">
@@ -12,6 +12,14 @@
 
    <ui:define name="error_message">
       <img src="https://http.cat/200.jpg" alt="" width="100%"/>
+   </ui:define>
+
+   <ui:define name="content">
+      <ui:include src="result_form.xhtml"/>
+
+      <br/>
+
+      <ui:include src="results_table.xhtml"/>
    </ui:define>
 
 </ui:composition>

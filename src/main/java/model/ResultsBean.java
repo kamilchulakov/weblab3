@@ -1,19 +1,55 @@
 package model;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Objects;
+import java.util.*;
 
+@ManagedBean
+@SessionScoped
 public class ResultsBean implements Serializable {
     final Deque<Result> entries;
-    SimpleDateFormat simpleDateFormat;
+    public double x;
+    public double y;
+    public double r;
 
     public ResultsBean() {
         entries = new ArrayDeque<>();
-        simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getR() {
+        return r;
+    }
+
+    public void setR(double r) {
+        this.r = r;
+    }
+
+    public void submitResult() {
+        Date date = new Date();
+        Result result = new Result(x, y, r, isInside(), date, new Date());
+        entries.addFirst(result);
+    }
+
+    private boolean isInside() {
+        return false;
     }
 
     public LinkedList<Result> getEntries() {
@@ -24,28 +60,19 @@ public class ResultsBean implements Serializable {
         entries.addFirst(result);
     }
 
-    public SimpleDateFormat getSimpleDateFormat() {
-        return simpleDateFormat;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (! (o instanceof ResultsBean)) return false;
         ResultsBean resultsBean1 = (ResultsBean) o;
-        return Objects.equals(getEntries(), resultsBean1.getEntries()) && Objects.equals(getSimpleDateFormat(), resultsBean1.getSimpleDateFormat());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getEntries(), getSimpleDateFormat());
+        return Objects.equals(getEntries(), resultsBean1.getEntries());
     }
 
     @Override
     public String toString() {
         return "Entries{" +
                 "entries=" + entries +
-                ", simpleDateFormat=" + simpleDateFormat +
                 '}';
     }
 }

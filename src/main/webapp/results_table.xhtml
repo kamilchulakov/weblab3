@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:dataTable id="result-table" value="#{resultsBean.entries}" var="point">
+<!--   <f:event type="preRenderView" listener="#{pointsBean.uploadPoints}"/>-->
+   <h:column>
+      <f:facet name="header">X</f:facet>
+      ${point.x}
+   </h:column>
+
+   <h:column>
+      <f:facet name="header">Y</f:facet>
+      ${point.y}
+   </h:column>
+
+   <h:column>
+      <f:facet name="header">R</f:facet>
+      ${point.r}
+   </h:column>
+
+   <h:column>
+      <f:facet name="header">Result</f:facet>
+      ${point.result ? "Yes" : "No"}
+   </h:column>
+
+   <h:column>
+      <f:facet name="header">Query Time</f:facet>
+      ${point.queryTime}
+   </h:column>
+
+   <h:column>
+      <f:facet name="header">Runtime</f:facet>
+      ${point.resultTime}
+   </h:column>
+
+</h:dataTable>
+
+</html>

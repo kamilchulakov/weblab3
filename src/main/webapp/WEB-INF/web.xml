@@ -5,6 +5,16 @@
 <web-app>
   <display-name>Web Application</display-name>
 
+  <filter>
+    <filter-name>AddData</filter-name>
+    <filter-class>servlets.AddingDataFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AddData</filter-name>
+<!--    <url-pattern>*</url-pattern>-->
+    <servlet-name>Controller</servlet-name>
+  </filter-mapping>
+
   <servlet>
     <servlet-name>Controller</servlet-name>
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

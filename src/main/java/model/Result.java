@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -9,6 +10,7 @@ public class Result implements Serializable {
     public double y;
     public double r;
     public boolean result;
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
     private Date queryTime;
     private Date resultTime;
 
@@ -53,8 +55,8 @@ public class Result implements Serializable {
         this.result = result;
     }
 
-    public Date getQueryTime() {
-        return queryTime;
+    public String getQueryTime() {
+        return simpleDateFormat.format(queryTime);
     }
 
     public void setQueryTime(Date queryTime) {
@@ -93,4 +95,7 @@ public class Result implements Serializable {
                 '}';
     }
 
+    public boolean getResult() {
+        return result;
+    }
 }
