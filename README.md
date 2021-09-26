@@ -3,7 +3,6 @@
 ```
 not implemented yet
 ```
-- Error messages
 - Points making
 - Onlick SVG
 
@@ -11,7 +10,7 @@ not implemented yet
 ```
 not done yet
 ```
-**void**
+- Error messages
 
 ### Notes
 ```
