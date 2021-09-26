@@ -5,6 +5,7 @@ import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import static servlets.Utils.*;
 
 @ManagedBean
 @SessionScoped
@@ -44,8 +45,10 @@ public class ResultsBean implements Serializable {
 
     public void submitResult() {
         Date date = new Date();
-        Result result = new Result(x, y, r, isInside(), date, new Date());
-        entries.addFirst(result);
+        if (isValid(x, y, r)) {
+            Result result = new Result(x, y, r, isInside(), date, new Date());
+            entries.addFirst(result);
+        }
     }
 
     public void clear() {
@@ -53,7 +56,7 @@ public class ResultsBean implements Serializable {
     }
 
     private boolean isInside() {
-        return false;
+        return isInArea(x, y, r);
     }
 
     public LinkedList<Result> getEntries() {
