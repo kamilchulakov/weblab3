@@ -93,3 +93,7 @@ svg {
 text+line{
   stroke: black;
 }
+
+polygon, path, rect {
+  fill: #27a482;
+}
