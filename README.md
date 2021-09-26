@@ -17,3 +17,4 @@ not done yet
 not feeling good yet
 ```
 - DO NOT USE ANY NICEFACES
+- Async Servlets can be used due to JSF Bean Management, but what about JDBC, can't it solve the problem? But how user will know if db has changed?
