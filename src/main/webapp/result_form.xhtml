@@ -28,19 +28,23 @@
             <f:selectItem itemValue="1" itemLabel="1"/>
             <f:selectItem itemValue="1.5" itemLabel="1.5"/>
             <f:selectItem itemValue="2" itemLabel="2"/>
+            <f:ajax execute="@form" render="x-error"/>
         </h:selectOneRadio >
-<!--        <h:message for="x" style="color: red"/>-->
+        <br/>
+        <h:message id="x-error" for="x" style="color: red"/>
 
     </div>
     <div class="y-value">
         <p>Выберите Y:</p>
-        <h:inputText styleClass="my-input" id="y" name="y" value="#{resultsBean.y}" a:placeholder="Value in [-5..5]"
+        <h:inputText id="y" name="y" value="#{resultsBean.y}" a:placeholder="Value in [-5..5]"
                      converterMessage="Y must be number..."
                      validatorMessage="Y must be number between -5 and 5 inclusive"
                      required="true" requiredMessage="Y is required" maxlength="6">
             <f:validateDoubleRange minimum="-5" maximum="5"/>
+            <f:ajax execute="@form" render="y-error"/>
         </h:inputText>
-        <h:message for="y" style="color: red"/>
+        <br/>
+        <h:message id="y-error" for="y" style="color: red"/>
     </div>
     <div class="r-value">
         <p>Выберите R:</p>
