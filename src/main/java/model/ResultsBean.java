@@ -1,5 +1,9 @@
 package model;
 
+import db.DatabaseManager;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
@@ -7,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import static servlets.Utils.*;
 
-@ManagedBean
+@ManagedBean(name = "resultsBean")
 @SessionScoped
 public class ResultsBean implements Serializable {
     private Deque<Result> entries;
@@ -44,11 +48,14 @@ public class ResultsBean implements Serializable {
     }
 
     public void submitResult() {
-        Date date = new Date();
-        if (isValid(x, y, r)) {
-            Result result = new Result(x, y, r, isInside(), date, new Date());
-            entries.addFirst(result);
-        }
+            Date date = new Date();
+            if (isValid(x, y, r)) {
+                Result result = new Result(x, y, r, isInside(), date, new Date());
+                entries.addFirst(result);
+                Session session = DatabaseManager.getInstance().getSession();
+                session.save(result);
+                session.close();
+            }
     }
 
     public void clear() {

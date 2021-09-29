@@ -15,9 +15,9 @@
     <div class="x-value">
         <p>Выберите X:</p>
         <h:selectOneRadio  id="x"
-                          value="#{resultsBean.x}"
+                          value="#{rb.x}"
                           required="true"
-                                 action="#{resultsBean.x}"
+                                 action="#{rb.x}"
                                  requiredMessage="X is required" style="text-align: center">
             <f:selectItem itemValue="-2" itemLabel="-2"/>
             <f:selectItem itemValue="-1.5" itemLabel="-1.5"/>
@@ -36,7 +36,7 @@
     </div>
     <div class="y-value">
         <p>Выберите Y:</p>
-        <h:inputText id="y" name="y" value="#{resultsBean.y}" a:placeholder="Value in [-5..5]"
+        <h:inputText id="y" name="y" value="#{rb.y}" a:placeholder="Value in [-5..5]"
                      converterMessage="Y must be number..."
                      validatorMessage="Y must be number between -5 and 5 inclusive"
                      required="true" requiredMessage="Y is required" maxlength="6">
@@ -49,16 +49,18 @@
     <div class="r-value">
         <p>Выберите R:</p>
         <h:panelGrid columns="1" style="margin-bottom: 10px">
-        <p:inputText id="r" value="#{resultsBean.r}"/>
+        <p:inputText id="r" value="#{rb.r}"/>
         <p:slider for="r" minValue="2" maxValue="5" step="0.25"/>
         </h:panelGrid>
     </div>
 
     <div>
-        <h:commandButton id="sumbitter" type="submit" value="Submit" action="#{resultsBean.submitResult}" style="background: darkcyan">
+        <h:commandButton id="sumbitter" type="submit" value="Submit" action="#{rb.submitResult}" style="background: darkcyan">
             <f:ajax execute="@form" render="result-table"/>
+            <f:ajax execute="@form" render="svg-wrapper"/>
         </h:commandButton>
-        <h:commandButton id="clearer" type="submit" value="Clear" action="#{resultsBean.clear}">
+        <h:commandButton id="clearer" type="submit" value="Clear" action="#{rb.clear}">
+            <f:ajax execute="@form" render="svg-wrapper"/>
             <f:ajax execute="@form" render="result-table"/>
         </h:commandButton>
     </div>

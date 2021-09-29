@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:body>
-<div class="svg-wrapper">
+<div id="svg-wrapper">
     <svg xmlns="http://www.w3.org/2000/svg" id="svgField">
         <!--            fill elements are here to make everything look nice-->
         <polygon fill-opacity="1" points="150,90 270,150 150,150"/>
@@ -45,6 +45,9 @@
 
         <polygon fill="black" points="300,150 295,145 295,155" stroke="black"/>
         <polygon fill="black" points="150,0  145,5   155,5" stroke="black"/>
+<!--        <c:forEach var="point" items="#{resultsBean.entries}">-->
+<!--            <circle r="5" cx="150" cy="100"/>-->
+<!--        </c:forEach>-->
     </svg>
 </div>
 </h:body>
