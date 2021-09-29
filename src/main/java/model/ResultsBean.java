@@ -21,6 +21,9 @@ public class ResultsBean implements Serializable {
 
     public ResultsBean() {
         entries = new ArrayDeque<>();
+        Session session = DatabaseManager.getInstance().getSession();
+        List<Result> list = session.createQuery("SELECT * FROM results", Result.class).getResultList();
+        entries.addAll(list);
     }
 
     public double getX() {
@@ -62,6 +65,10 @@ public class ResultsBean implements Serializable {
 
     public void clear() {
         entries = new ArrayDeque<>();
+        Session session = DatabaseManager.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        session.clear();
+        transaction.commit();
     }
 
     private boolean isInside() {
