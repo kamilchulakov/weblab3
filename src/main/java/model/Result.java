@@ -1,16 +1,25 @@
 package model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name="results")
 public class Result implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     public double x;
     public double y;
     public double r;
     public boolean result;
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+    @Transient
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
     private Date queryTime;
     private Date resultTime;
 
@@ -21,6 +30,22 @@ public class Result implements Serializable {
         this.result = result;
         this.queryTime = queryTime;
         this.resultTime = resultTime;
+    }
+
+    public Result() {
+
+    }
+
+    public SimpleDateFormat getSimpleDateFormat() {
+        return simpleDateFormat;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public double getX() {
