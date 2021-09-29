@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.io.Serializable;
@@ -32,6 +33,16 @@ public class ResultsBean implements Serializable {
         CriteriaQuery<Result> all = cq.select(rootEntry);
         TypedQuery<Result> allQuery = session.createQuery(all);
         entries.addAll(allQuery.getResultList());
+    }
+
+
+    private void clearDbWithEntries() {
+        Session session = DatabaseManager.getInstance().getSession();
+        session.beginTransaction();
+        for (Result result: entries) {
+            session.delete(result);
+        }
+        session.getTransaction().commit();
     }
 
     public double getX() {
@@ -63,20 +74,21 @@ public class ResultsBean implements Serializable {
         if (isValid(x, y, r)) {
             Result result = new Result(x, y, r, isInside(), date, new Date());
             entries.addFirst(result);
-            Session session = DatabaseManager.getInstance().getSession();
-            Transaction transaction = session.beginTransaction();
-            session.save(result);
-            transaction.commit();
+            save(result);
 //            System.out.println(entries);
         }
     }
 
-    public void clear() {
-        entries = new ArrayDeque<>();
+    private void save(Result result) {
         Session session = DatabaseManager.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        session.clear();
+        session.save(result);
         transaction.commit();
+    }
+
+    public void clear() {
+        clearDbWithEntries();
+        entries = new ArrayDeque<>();
     }
 
     private boolean isInside() {
