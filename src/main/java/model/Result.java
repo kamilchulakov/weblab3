@@ -10,7 +10,7 @@ import java.util.Objects;
 @Table(name="results")
 public class Result implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -20,16 +20,16 @@ public class Result implements Serializable {
     public boolean result;
     @Transient
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
-    private Date queryTime;
-    private Date resultTime;
+    private long query;
+    private long time;
 
-    public Result(double x, double y, double r, boolean result, Date queryTime, Date resultTime) {
+    public Result(double x, double y, double r, boolean result, Date query, Date time) {
         this.x = x;
         this.y = y;
         this.r = r;
         this.result = result;
-        this.queryTime = queryTime;
-        this.resultTime = resultTime;
+        this.query = query.getTime();
+        this.time = time.getTime() - this.query;
     }
 
     public Result() {
@@ -80,12 +80,20 @@ public class Result implements Serializable {
         this.result = result;
     }
 
-    public String getQueryTime() {
-        return simpleDateFormat.format(queryTime);
+    public String getQuery() {
+        return simpleDateFormat.format(query);
     }
 
-    public void setQueryTime(Date queryTime) {
-        this.queryTime = queryTime;
+    public void setQuery(long queryTime) {
+        this.query = queryTime;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long resultTime) {
+        this.time = resultTime;
     }
 
     @Override
@@ -93,20 +101,13 @@ public class Result implements Serializable {
         if (this == o) return true;
         if (! (o instanceof Result)) return false;
         Result result = (Result) o;
-        return Double.compare(result.getX(), getX()) == 0 && Double.compare(result.getY(), getY()) == 0 && Double.compare(result.getR(), getR()) == 0 && isInside() == result.isInside() && Objects.equals(getQueryTime(), result.getQueryTime());
+        return Double.compare(result.getX(), getX()) == 0 && Double.compare(result.getY(), getY()) == 0 && Double.compare(result.getR(), getR()) == 0 && isInside() == result.isInside() && Objects.equals(getQuery(), result.getQuery());
     }
 
-    public long getResultTime() {
-        return (resultTime.getTime() - queryTime.getTime());
-    }
-
-    public void setResultTime(Date resultTime) {
-        this.resultTime = resultTime;
-    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getX(), getY(), getR(), isInside(), getQueryTime());
+        return Objects.hash(getX(), getY(), getR(), isInside(), getQuery());
     }
 
     @Override
@@ -116,7 +117,7 @@ public class Result implements Serializable {
                 ", y=" + y +
                 ", r=" + r +
                 ", result=" + result +
-                ", queryTime=" + queryTime +
+                ", queryTime=" + query +
                 '}';
     }
 

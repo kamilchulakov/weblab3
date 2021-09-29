@@ -48,14 +48,14 @@ public class ResultsBean implements Serializable {
     }
 
     public void submitResult() {
-            Date date = new Date();
-            if (isValid(x, y, r)) {
-                Result result = new Result(x, y, r, isInside(), date, new Date());
-                entries.addFirst(result);
-                Session session = DatabaseManager.getInstance().getSession();
-                session.save(result);
-                session.close();
-            }
+        Date date = new Date();
+        if (isValid(x, y, r)) {
+            Result result = new Result(x, y, r, isInside(), date, new Date());
+            entries.addFirst(result);
+            Session session = DatabaseManager.getInstance().getSession();
+            session.save(result);
+            System.out.println(entries);
+        }
     }
 
     public void clear() {

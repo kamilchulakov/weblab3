@@ -57,10 +57,10 @@
     <div>
         <h:commandButton id="sumbitter" type="submit" value="Submit" action="#{rb.submitResult}" style="background: darkcyan">
             <f:ajax execute="@form" render="result-table"/>
-            <f:ajax execute="@form" render="svg-wrapper"/>
+<!--            <f:ajax execute="@form" render="svg-wrapper"/>-->
         </h:commandButton>
         <h:commandButton id="clearer" type="submit" value="Clear" action="#{rb.clear}">
-            <f:ajax execute="@form" render="svg-wrapper"/>
+<!--            <f:ajax execute="@form" render="svg-wrapper"/>-->
             <f:ajax execute="@form" render="result-table"/>
         </h:commandButton>
     </div>
