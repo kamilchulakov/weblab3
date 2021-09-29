@@ -6,6 +6,10 @@ import org.hibernate.Transaction;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -22,8 +26,12 @@ public class ResultsBean implements Serializable {
     public ResultsBean() {
         entries = new ArrayDeque<>();
         Session session = DatabaseManager.getInstance().getSession();
-        List<Result> list = session.createQuery("SELECT * FROM results", Result.class).getResultList();
-        entries.addAll(list);
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<Result> cq = cb.createQuery(Result.class);
+        Root<Result> rootEntry = cq.from(Result.class);
+        CriteriaQuery<Result> all = cq.select(rootEntry);
+        TypedQuery<Result> allQuery = session.createQuery(all);
+        entries.addAll(allQuery.getResultList());
     }
 
     public double getX() {
