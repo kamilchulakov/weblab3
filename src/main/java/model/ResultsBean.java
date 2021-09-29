@@ -53,8 +53,10 @@ public class ResultsBean implements Serializable {
             Result result = new Result(x, y, r, isInside(), date, new Date());
             entries.addFirst(result);
             Session session = DatabaseManager.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
             session.save(result);
-            System.out.println(entries);
+            transaction.commit();
+//            System.out.println(entries);
         }
     }
 
