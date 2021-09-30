@@ -88,6 +88,7 @@ public class ResultsBean implements Serializable {
     }
 
     public LinkedList<Result> getEntries() {
+        if (entries.size() != DatabaseManager.getInstance().getResultList().size()) entries = DatabaseManager.getInstance().getResultList();
         return new LinkedList<>(entries);
     }
 

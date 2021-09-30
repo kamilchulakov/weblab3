@@ -49,8 +49,8 @@ public class PointMakerServlet extends HttpServlet {
     public void makePoint(Result result, PrintWriter writer,double r) {
         String color = "red";
         if (result.result) color = "green";
-        double x = ((result.x * 2) / r * 50 + 300 / 2.0) ;
-        double y = (300 / 2.0 - (result.y * 2) / r * 50);
+        double x = ((result.x * 2) / r * 50 + 300 / 2.0) - 0.2;
+        double y = (300 / 2.0 - (result.y * 2) / r * 50) - 0.4;
 
         writer.print(String.format("<circle r=\"5\" cx=%s cy=%s" +
                 " id=\"pointer\" fill=%s></circle>", getHtmlDoubleString(x), getHtmlDoubleString(y), color
