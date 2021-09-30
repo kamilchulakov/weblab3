@@ -14,6 +14,7 @@ window.onload = function () {
         let X = (((R / 50) * (svgSize / 2 - rowX) * -1) / 2).toFixed(1);
         let Y = (((R / 50) * (svgSize / 2 - rowY)) / 2).toFixed(1);
         updateSvgAndSubmit(X, Y, R);
+        updateHtmlTable()
     }
     submitter.addEventListener('click', function () {
         // alert("Click") this works
@@ -22,6 +23,21 @@ window.onload = function () {
         // },300);
         justGetNewSvg()
     })
+}
+
+function updateHtmlTable() {
+    alert("In table update")
+    let table = document.getElementById("result-table");
+    let tableData = table.innerHTML;
+    $.ajax({
+        type: "GET",
+        url: "table",
+        success: function (data) {
+            table.innerHTML = tableData + data
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        }
+    });
 }
 
 function clear() {
@@ -45,6 +61,8 @@ function updateSvgAndSubmit(X, Y, R) {
         }
     });
 }
+
+
 
 function justGetAllSvg() {
     let R = document.getElementById("form:r").getAttribute("value");
