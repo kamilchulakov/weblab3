@@ -1,6 +1,6 @@
 let svgField = document.getElementById("svgField"),
     svgWrapper = document.getElementById("svg-wrapper"),
-    submitter = document.getElementById("submitter"),
+    submitter = document.getElementById("form:sumbitter"),
     defaultSvg = svgField.innerHTML;
 
 window.onload = function () {
@@ -15,9 +15,13 @@ window.onload = function () {
         let Y = (((R / 50) * (svgSize / 2 - rowY)) / 2).toFixed(1);
         updateSvgAndSubmit(X, Y, R);
     }
-    submitter.onclick = function () {
+    submitter.addEventListener('click', function () {
+        // alert("Click") this works
+        // setTimeout(function(){
+        //     console.log('timedout');
+        // },300);
         justGetNewSvg()
-    }
+    })
 }
 
 function clear() {
@@ -62,6 +66,7 @@ function justGetAllSvg() {
 
 function justGetNewSvg() {
     let lastSvg = svgField.innerHTML;
+    let R = document.getElementById("form:r").getAttribute("value");
     $.ajax({
         type: "GET",
         url: "points",

@@ -62,8 +62,8 @@ public class ResultsBean implements Serializable {
         Date date = new Date();
         if (isValid(x, y, r)) {
             Result result = new Result(x, y, r, isInside(), date, new Date());
-            entries.addFirst(result);
             save(result);
+            entries.addFirst(result);
 //            System.out.println(entries);
         }
     }
@@ -73,7 +73,9 @@ public class ResultsBean implements Serializable {
         Transaction transaction = session.beginTransaction();
         session.save(result);
         transaction.commit();
+        System.out.println("Start of DM update");
         DatabaseManager.getInstance().addResults(result);
+        System.out.println("Finish of DM update");
     }
 
     public void clear() {

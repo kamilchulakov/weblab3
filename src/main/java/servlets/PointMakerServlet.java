@@ -19,15 +19,22 @@ import static servlets.Utils.getHtmlDoubleString;
 public class PointMakerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ResultsBean resultsBean = new ResultsBean();
-        resultsBean.setX(Utils.getDoubleParameter(req, "x"));
-        resultsBean.setY(Utils.getDoubleParameter(req, "y"));
-        resultsBean.setR(Utils.getDoubleParameter(req, "r"));
-        if (resultsBean.getY() == -1000) {
-            Result lastResult = resultsBean.getEntries().getLast();
+        if (Utils.getDoubleParameter(req, "y") == -1000) {
+            System.out.println("I was in -1000 points");
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            ResultsBean resultsBean = new ResultsBean();
+            Result lastResult = resultsBean.getEntries().getFirst();
             makePoint(lastResult, resp.getWriter(), resultsBean.getR());
         }
         else {
+            ResultsBean resultsBean = new ResultsBean();
+            resultsBean.setX(Utils.getDoubleParameter(req, "x"));
+            resultsBean.setY(Utils.getDoubleParameter(req, "y"));
+            resultsBean.setR(Utils.getDoubleParameter(req, "r"));
             if (resultsBean.getX() != -1000) resultsBean.submitResult();
             makePoints(resultsBean.getEntries(), resp.getWriter(),
                     resultsBean.getR());
