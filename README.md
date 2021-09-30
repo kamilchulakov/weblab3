@@ -3,14 +3,16 @@
 ```
 not implemented yet
 ```
-- Points making
-- Onlick SVG
+- Make form update SVG
+- Make SVG update form
 
 ### Done
 ```
 not done yet
 ```
 - Error messages
+- Points making
+- Onlick SVG
 
 ### Notes
 ```
