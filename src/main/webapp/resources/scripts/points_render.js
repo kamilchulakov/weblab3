@@ -26,14 +26,13 @@ window.onload = function () {
 }
 
 function updateHtmlTable() {
-    alert("In table update")
     let table = document.getElementById("result-table");
     let tableData = table.innerHTML;
     $.ajax({
         type: "GET",
         url: "table",
         success: function (data) {
-            table.innerHTML = tableData + data
+            table.innerHTML =  data + tableData
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
         }
