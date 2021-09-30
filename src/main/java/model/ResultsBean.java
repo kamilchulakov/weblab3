@@ -26,23 +26,12 @@ public class ResultsBean implements Serializable {
 
     public ResultsBean() {
         entries = new ArrayDeque<>();
-        Session session = DatabaseManager.getInstance().getSession();
-        CriteriaBuilder cb = session.getCriteriaBuilder();
-        CriteriaQuery<Result> cq = cb.createQuery(Result.class);
-        Root<Result> rootEntry = cq.from(Result.class);
-        CriteriaQuery<Result> all = cq.select(rootEntry);
-        TypedQuery<Result> allQuery = session.createQuery(all);
-        entries.addAll(allQuery.getResultList());
+        entries.addAll(DatabaseManager.getInstance().getResultList());
     }
 
 
     private void clearDbWithEntries() {
-        Session session = DatabaseManager.getInstance().getSession();
-        session.beginTransaction();
-        for (Result result: entries) {
-            session.delete(result);
-        }
-        session.getTransaction().commit();
+        DatabaseManager.getInstance().clearResults();
     }
 
     public double getX() {
@@ -84,6 +73,7 @@ public class ResultsBean implements Serializable {
         Transaction transaction = session.beginTransaction();
         session.save(result);
         transaction.commit();
+        DatabaseManager.getInstance().addResults(result);
     }
 
     public void clear() {

@@ -8,6 +8,10 @@ public class Utils {
         return Double.parseDouble(request.getParameter(parameter).replace(",", "."));
     }
 
+    public static String getHtmlDoubleString(double num) {
+        return Double.toString(num).replace(",", ".");
+    }
+
     public static boolean isInArea(double x, double y, double r) {
         return isInRect(x, y, r) || isInCircle(x, y, r)
                 || isInPolygon(x, y, r);
