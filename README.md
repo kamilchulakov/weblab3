@@ -3,7 +3,6 @@
 ```
 not implemented yet
 ```
-- Error messages
 - Points making
 - Onlick SVG
 
@@ -11,10 +10,11 @@ not implemented yet
 ```
 not done yet
 ```
-**void**
+- Error messages
 
 ### Notes
 ```
 not feeling good yet
 ```
 - DO NOT USE ANY NICEFACES
+- Async Servlets can be used due to JSF Bean Management, but what about JDBC, can't it solve the problem? But how user will know if db has changed?
