@@ -49,9 +49,17 @@
     <div class="r-value">
         <p>Выберите R:</p>
         <h:panelGrid columns="1" style="margin-bottom: 10px">
-        <p:inputText id="r" value="#{rb.r}"/>
-        <p:slider for="r" minValue="2" maxValue="5" step="0.25"/>
+        <p:inputText id="r" value="#{rb.r}" disabled="false">
+            <f:validateDoubleRange minimum="2" maximum="5"/>
+            <f:ajax execute="@form" render="r-error"/>
+            <f:ajax execute="@form" render="r-hidden"/>
+        </p:inputText>
+        <p:slider for="r" minValue="2" maxValue="5" step="0.25">
+            <f:ajax execute="@form" render="r-hidden"/>
+        </p:slider>
         </h:panelGrid>
+        <h:message id="r-error" for="r" style="color: red"/>
+        <h:outputText id="r-hidden" title="#{rb.r}" style="display: none"/>
     </div>
 
     <div>
