@@ -35,12 +35,18 @@ public class PointMakerServlet extends HttpServlet {
             resultsBean.setX(Utils.getDoubleParameter(req, "x"));
             resultsBean.setY(Utils.getDoubleParameter(req, "y"));
             resultsBean.setR(Utils.getDoubleParameter(req, "r"));
-            if (resultsBean.getX() != -1000) resultsBean.submitResult();
-            makePoints(resultsBean.getEntries(), resp.getWriter(),
-                    resultsBean.getR());
+            if (resultsBean.getX() != -1000) {
+                resultsBean.submitResult();
+                makePoint(resultsBean.getEntries().getFirst(), resp.getWriter(), resultsBean.getR());
+            }
+            else {
+                makePoints(resultsBean.getEntries(), resp.getWriter(),
+                        resultsBean.getR());
+            }
         }
     }
     public void makePoints(List<Result> results, PrintWriter writer, double r) {
+        System.out.println(results.size());
         for (Result result:  results) {
             makePoint(result, writer, r);
         }
@@ -51,7 +57,6 @@ public class PointMakerServlet extends HttpServlet {
         if (result.result) color = "green";
         double x = ((result.x * 2) / r * 60 + 150.0);
         double y = (150.0 - (result.y * 2) / r * 60);
-        System.out.printf("%.1f %.1f %.1f %.1f\n",x, y, result.x, result.y);
 
         writer.print(String.format("<circle r=\"5\" cx=%s cy=%s" +
                 " id=\"pointer\" fill=%s></circle>", getHtmlDoubleString(x), getHtmlDoubleString(y), color
