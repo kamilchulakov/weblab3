@@ -27,7 +27,12 @@ public class PointMakerServlet extends HttpServlet {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        resultsBean.setR(resultsBean.getEntries().getFirst().getR());
+        try {
+            resultsBean.setR(resultsBean.getEntries().getFirst().getR());
+        } catch (Exception e) {
+            // nothing in db to use it as last submittion. just using default value = 2
+            resultsBean.setR(2.0);
+        }
 //        resultsBean.setR(Utils.getDoubleParameter(req, "r"));
         if (resultsBean.getX() != -1000) {
             resultsBean.submitResult();
