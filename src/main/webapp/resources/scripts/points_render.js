@@ -11,8 +11,8 @@ window.onload = function () {
         let rowX = event.offsetX
         let rowY = event.offsetY
         let R = document.getElementById("form:r").getAttribute("value");
-        let X = (((R / 50) * (svgSize / 2 - rowX) * -1) / 2).toFixed(1);
-        let Y = (((R / 50) * (svgSize / 2 - rowY)) / 2).toFixed(1);
+        let X = (((svgSize / 2 - rowX) * -R) / 120 - 0.7).toFixed(1);
+        let Y = (((R / 60) * (svgSize / 2 - rowY)) / 2 + 0.7).toFixed(1);
         updateSvgAndSubmit(X, Y, R);
         updateHtmlTable()
     }
