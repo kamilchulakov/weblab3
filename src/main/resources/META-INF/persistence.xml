@@ -1,0 +1,19 @@
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+    <persistence-unit name="Result">
+        <description>I don't understand JPA, but it is needed for EntityManager</description>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+<!--        <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>-->
+<!--        <validation-mode>CALLBACK</validation-mode>-->
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+<!--            < – database connection – >-->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/studs" />
+            <property name="jakarta.persistence.jdbc.user" value="" />
+            <property name="jakarta.persistence.jdbc.password" value="" />
+
+        </properties>
+
+    </persistence-unit>
+</persistence>
