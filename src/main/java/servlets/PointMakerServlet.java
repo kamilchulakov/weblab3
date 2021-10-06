@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import static servlets.Utils.getHtmlDoubleString;
+import static servlets.Utils.isInArea;
 
 @WebServlet(urlPatterns = "/points")
 public class PointMakerServlet extends HttpServlet {
@@ -54,9 +55,9 @@ public class PointMakerServlet extends HttpServlet {
 
     public void makePoint(Result result, PrintWriter writer,double r) {
         String color = "red";
-        if (result.result) color = "green";
         double x = ((result.x * 2) / r * 60.0 + 150.0);
         double y = (150.0 - (result.y * 2) / r * 60.0);
+        if (isInArea(result.x, result.y, r)) color = "green";
 
         writer.print(String.format("<circle r=\"5\" cx=%s cy=%s" +
                 " id=\"pointer\" fill=%s></circle>", getHtmlDoubleString(x), getHtmlDoubleString(y), color
