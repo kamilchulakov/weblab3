@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static servlets.Utils.getHtmlDoubleString;
 
@@ -27,10 +28,10 @@ public class PointMakerServlet extends HttpServlet {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        try {
+        if (resultsBean.getEntries().size() > 0) {
             resultsBean.setR(resultsBean.getEntries().getFirst().getR());
-        } catch (Exception e) {
             // nothing in db to use it as last submittion. just using default value = 2
+        } else {
             resultsBean.setR(2.0);
         }
 //        resultsBean.setR(Utils.getDoubleParameter(req, "r"));

@@ -1,7 +1,8 @@
 let statusImg = document.getElementById("cat");
 check()
 window.onload = function () {
-    window.setInterval(check, 500);
+    setTimeout(check, 0)
+    setInterval(check, 500);
 }
 
 function check() {

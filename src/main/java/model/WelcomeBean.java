@@ -7,7 +7,7 @@ import java.io.Serializable;
 Note
 In JSF 1.x, you had to declare beans in the faces-config.xml, but this is no longer required in JSF 2.0.
  */
-@ManagedBean
+@ManagedBean(name = "welcomeBean")
 @SessionScoped
 public class WelcomeBean implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -15,6 +15,7 @@ public class WelcomeBean implements Serializable {
     private String name;
 
     public String getName() {
+        if (name == null) return "";
         return name;
     }
     public void setName(String name) {
