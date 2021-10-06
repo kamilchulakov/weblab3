@@ -14,6 +14,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -41,6 +42,7 @@ public class DatabaseManager {
             CriteriaQuery<Result> all = cq.select(rootEntry);
             TypedQuery<Result> allQuery = session.createQuery(all);
             resultList.addAll(allQuery.getResultList());
+            Collections.reverse((LinkedList<Result>) resultList);
         } catch (MappingException e) {
             System.out.println("Invalid Hibernate Mapping!");
             System.exit(1);
