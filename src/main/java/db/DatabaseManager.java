@@ -6,6 +6,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -18,10 +21,17 @@ import java.util.List;
 public class DatabaseManager {
     private static DatabaseManager dm;
     private Session session;
+//    private EntityManager entityManager;
     private Deque<Result> resultList = new LinkedList<>();
 
     public DatabaseManager() {
         try {
+//            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Result");
+//            if (entityManagerFactory != null) {
+//                entityManager = entityManagerFactory.createEntityManager();
+//                System.out.println(entityManager != null);
+//            } else System.out.println("EntityManager is not working.");
+//            session = entityManager.unwrap(Session.class);
             Configuration configuration = new Configuration().configure();
             SessionFactory sessionFactory = configuration.buildSessionFactory();
             session = sessionFactory.openSession();
@@ -64,5 +74,16 @@ public class DatabaseManager {
     public synchronized static DatabaseManager getInstance() {
         if (dm == null) dm = new DatabaseManager();
         return dm;
+    }
+
+    public static void destroyInstance() {
+        dm.inInstanceDestroy();
+        dm = null;
+    }
+
+    private void inInstanceDestroy() {
+        session = null;
+//        entityManager = null;
+        resultList = null;
     }
 }

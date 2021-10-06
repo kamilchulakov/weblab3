@@ -1,5 +1,6 @@
 package servlets;
 
+import db.DatabaseManager;
 import model.Result;
 import model.ResultsBean;
 
@@ -21,22 +22,12 @@ import static servlets.Utils.getHtmlDoubleString;
 
 @WebServlet(urlPatterns = "/points")
 public class PointMakerServlet extends HttpServlet {
-    EntityManager entityManager;
-    @Override
-    public void init() throws ServletException {
-        super.init();
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ResultsBean resultsBean = new ResultsBean();
         resultsBean.setX(Utils.getDoubleParameter(req, "x"));
         resultsBean.setY(Utils.getDoubleParameter(req, "y"));
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Result");
-        if (entityManagerFactory != null) {
-            entityManager = entityManagerFactory.createEntityManager();
-            System.out.println(entityManager != null);
-        } else System.out.println("EntityManager is not working.");
         try {
             Thread.sleep(125);
         } catch (InterruptedException e) {
@@ -70,5 +61,11 @@ public class PointMakerServlet extends HttpServlet {
         writer.print(String.format("<circle r=\"5\" cx=%s cy=%s" +
                 " id=\"pointer\" fill=%s></circle>", getHtmlDoubleString(x), getHtmlDoubleString(y), color
         ));
+    }
+
+    @Override
+    public void destroy() {
+        DatabaseManager.destroyInstance();
+        super.destroy();
     }
 }
