@@ -61,6 +61,10 @@ public class ResultsBean implements Serializable {
     public void submitResult() {
         Date date = new Date();
         if (isValid(x, y, r)) {
+            x = x * r / 2.0;
+            x = Math.ceil(x * 10.0) / 10.0;
+            y = y * r / 2.0;
+            y = Math.ceil(y * 10.0) / 10.0;
             Result result = new Result(x, y, r, isInside(), date, new Date());
             save(result);
             entries.addFirst(result);
