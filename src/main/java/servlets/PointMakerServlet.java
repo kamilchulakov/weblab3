@@ -29,11 +29,6 @@ public class PointMakerServlet extends HttpServlet {
         ResultsBean resultsBean = new ResultsBean();
         resultsBean.setX(Utils.getDoubleParameter(req, "x"));
         resultsBean.setY(Utils.getDoubleParameter(req, "y"));
-        try {
-            Thread.sleep(125);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         if (resultsBean.getEntries().size() > 0) {
             resultsBean.setR(resultsBean.getEntries().getFirst().getR());
             // nothing in db to use it as last submittion. just using default value = 2

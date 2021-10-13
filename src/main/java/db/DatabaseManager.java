@@ -22,6 +22,7 @@ import java.util.List;
 public class DatabaseManager {
     private static DatabaseManager dm;
     private Session session;
+    private SessionFactory sessionFactory;
 //    private EntityManager entityManager;
     private Deque<Result> resultList = new LinkedList<>();
 
@@ -34,7 +35,7 @@ public class DatabaseManager {
 //            } else System.out.println("EntityManager is not working.");
 //            session = entityManager.unwrap(Session.class);
             Configuration configuration = new Configuration().configure();
-            SessionFactory sessionFactory = configuration.buildSessionFactory();
+            sessionFactory = configuration.buildSessionFactory();
             session = sessionFactory.openSession();
             CriteriaBuilder cb = session.getCriteriaBuilder();
             CriteriaQuery<Result> cq = cb.createQuery(Result.class);
@@ -70,7 +71,7 @@ public class DatabaseManager {
     }
 
     public Session getSession() {
-        return session;
+        return sessionFactory.openSession();
     }
 
     public synchronized static DatabaseManager getInstance() {
