@@ -2,6 +2,7 @@ let svgField = document.getElementById("svgField"),
     svgWrapper = document.getElementById("svg-wrapper"),
     submitter = document.getElementById("form:sumbitter"),
     rInput = document.getElementById("form:r"),
+    statusImg = document.getElementById("cat"),
     defaultSvg = svgField.innerHTML;
 
 window.onload = function () {
@@ -36,6 +37,7 @@ function updateHtmlTable() {
             table.innerHTML =  data + tableData
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
+            showError503Cat()
         }
     });
 }
@@ -57,6 +59,7 @@ function updateSvgAndSubmit(X, Y, R) {
             svgField.innerHTML = defaultSvg + data
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
+            showError503Cat()
         }
     });
 }
@@ -77,8 +80,13 @@ function justGetAllSvg() {
             svgField.innerHTML = defaultSvg + data
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
+            showError503Cat()
         }
     });
+}
+
+function showError503Cat() {
+    statusImg.setAttribute("src", "resources/img/503.png")
 }
 
 function justGetNewSvg() {
@@ -96,6 +104,7 @@ function justGetNewSvg() {
             svgField.innerHTML = lastSvg + data
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
+            showError503Cat();
         }
     });
 }

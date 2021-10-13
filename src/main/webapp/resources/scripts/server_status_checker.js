@@ -1,5 +1,3 @@
-let statusImg = document.getElementById("cat");
-check()
 window.onload = function () {
     setTimeout(check, 0)
     setInterval(check, 500);
