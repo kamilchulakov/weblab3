@@ -11,6 +11,16 @@
         <br><h:link outcome="app">Go to main page</h:link></br>
         <h:graphicImage url="https://http.cat/100.jpg"/>
         <h:outputScript library="scripts" name="clock.js"/>
+        <br></br>
+        <h2>"From Action" Navigation</h2>
+        <hr />
+
+        <h:form>
+            <h:commandLink action = "#{navigationController.processIndex}" value = "index" />
+            <br></br>
+            <h:commandLink action = "#{navigationController.processApp}" value = "app" />
+        </h:form>
+        <br/>
     </h:body>
     <h:outputScript library="scripts" name="clock.js"/>
 </html>
