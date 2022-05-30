@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -14,6 +15,7 @@ import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
 import static servlets.Utils.*;
 
 @ManagedBean(name = "resultsBean")
@@ -23,12 +25,22 @@ public class ResultsBean implements Serializable {
     private double x;
     private double y = 0.0;
     private double r = 2.0;
+//    @ManagedProperty(value = "#{counterBean}")
+    private CounterBean counterBean;
 
     public ResultsBean() {
+        counterBean = new CounterBean();
         entries = new ArrayDeque<>();
         entries.addAll(DatabaseManager.getInstance().getResultList());
     }
 
+    public CounterBean getCounterBean() {
+        return counterBean;
+    }
+
+    public void setCounterBean(CounterBean counterBean) {
+        this.counterBean = counterBean;
+    }
 
     private void clearDbWithEntries() {
         DatabaseManager.getInstance().clearResults();
@@ -37,6 +49,7 @@ public class ResultsBean implements Serializable {
     public double getX() {
         return x;
     }
+
 
     public void setX(double x) {
         this.x = x;
@@ -59,6 +72,7 @@ public class ResultsBean implements Serializable {
     }
 
     public void submitResult() {
+        counterBean.incrementCounter();
         Date date = new Date();
         if (isValid(x, y, r)) {
             x = x * r / 2.0;
@@ -92,7 +106,8 @@ public class ResultsBean implements Serializable {
     }
 
     public LinkedList<Result> getEntries() {
-        if (entries.size() != DatabaseManager.getInstance().getResultList().size()) entries = DatabaseManager.getInstance().getResultList();
+        if (entries.size() != DatabaseManager.getInstance().getResultList().size())
+            entries = DatabaseManager.getInstance().getResultList();
         return new LinkedList<>(entries);
     }
 
@@ -104,7 +119,7 @@ public class ResultsBean implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (! (o instanceof ResultsBean)) return false;
+        if (!(o instanceof ResultsBean)) return false;
         ResultsBean resultsBean1 = (ResultsBean) o;
         return Objects.equals(getEntries(), resultsBean1.getEntries());
     }
