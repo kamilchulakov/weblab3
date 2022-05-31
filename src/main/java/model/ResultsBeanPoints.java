@@ -1,15 +1,13 @@
 package model;
 
 import db.DatabaseManager;
-import mBeans.PointsCounter;
+import mBeans.HuetaDlyaRegistration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.management.*;
 import java.io.Serializable;
-import java.lang.management.ManagementFactory;
 import java.util.*;
 
 import static servlets.Utils.isInArea;
@@ -64,6 +62,7 @@ public class ResultsBeanPoints implements Serializable {
 
     public void submitResult() {
         HuetaDlyaRegistration.getPcBean().incrementPointsCount();
+        HuetaDlyaRegistration.getClickIntervalB().doInterval();
         Date date = new Date();
         if (isValid(x, y, r)) {
             x = x * r / 2.0;
