@@ -1,13 +1,14 @@
 package servlets;
 
 import db.DatabaseManager;
+import model.ResBeanBuilder;
 import model.Result;
-import model.ResultsBean;
+import model.ResultsBeanPoints;
 
-import javax.faces.bean.ManagedBean;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.management.InstanceAlreadyExistsException;
+import javax.management.MBeanRegistrationException;
+import javax.management.MalformedObjectNameException;
+import javax.management.NotCompliantMBeanException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,17 +17,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static servlets.Utils.getHtmlDoubleString;
 import static servlets.Utils.isInArea;
 
 @WebServlet(urlPatterns = "/points")
 public class PointMakerServlet extends HttpServlet {
+    ResultsBeanPoints resultsBean = ResBeanBuilder.getBean();
+
+
+    public PointMakerServlet() {
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ResultsBean resultsBean = new ResultsBean();
         resultsBean.setX(Utils.getDoubleParameter(req, "x"));
         resultsBean.setY(Utils.getDoubleParameter(req, "y"));
         if (resultsBean.getEntries().size() > 0) {
@@ -43,12 +47,12 @@ public class PointMakerServlet extends HttpServlet {
     }
 
     public void makePoints(List<Result> results, PrintWriter writer, double r) {
-        for (Result result:  results) {
+        for (Result result : results) {
             makePoint(result, writer, r);
         }
     }
 
-    public void makePoint(Result result, PrintWriter writer,double r) {
+    public void makePoint(Result result, PrintWriter writer, double r) {
         String color = "red";
         double x = ((result.x * 2) / r * 60.0 + 150.0);
         double y = (150.0 - (result.y * 2) / r * 60.0);
